@@ -337,6 +337,30 @@ Contains shipment information for each container.
 | transport_company | VARCHAR(100) | Transport company |
 
 ---
+## 3. container_master.csv
+
+### Description
+
+Contains master details of all refrigerated containers.
+
+### Primary Key
+
+`container_id`
+
+### Columns
+
+| Column | Data Type | Description |
+|---------|-----------|-------------|
+| container_id | VARCHAR(10) | Container ID |
+| container_type | VARCHAR(30) | Container type |
+| max_temperature | DECIMAL(5,2) | Maximum safe temperature |
+| max_humidity | DECIMAL(5,2) | Maximum safe humidity |
+| refrigeration_type | VARCHAR(30) | Cooling system |
+| capacity_kg | INT | Capacity in kilograms |
+| manufacture_year | INT | Manufacturing year |
+| status | VARCHAR(20) | Active or Maintenance |
+
+---
 
 
 # 📈 Dashboard Features
