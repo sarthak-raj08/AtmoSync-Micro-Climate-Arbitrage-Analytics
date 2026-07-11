@@ -81,7 +81,7 @@ Snowflake Data Warehouse
 dbt ELT Models
       │
       ▼
-Apache Superset Dashboard
+Power BI Dashboard
       │
       ▼
 Business Alerts & Decision Support
@@ -98,7 +98,7 @@ Business Alerts & Decision Support
 | Cloud Data Warehouse | Snowflake |
 | Data Transformation | dbt Core |
 | Database Language | SQL |
-| Business Intelligence | Apache Superset |
+| Business Intelligence | Power BI |
 | Alerting | Slack / Email |
 | Version Control | Git & GitHub |
 
