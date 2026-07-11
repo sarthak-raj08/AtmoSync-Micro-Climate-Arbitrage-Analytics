@@ -307,6 +307,37 @@ Stores real-time IoT sensor readings collected from refrigerated containers.
 | network_signal | VARCHAR(20) | Strong, Medium or Weak |
 
 ---
+## 2. shipment_master.csv
+
+### Description
+
+Contains shipment information for each container.
+
+### Primary Key
+
+`shipment_id`
+
+### Foreign Key
+
+`container_id` → container_master.container_id
+
+### Columns
+
+| Column | Data Type | Description |
+|---------|-----------|-------------|
+| shipment_id | VARCHAR(15) | Shipment ID |
+| container_id | VARCHAR(10) | Container ID |
+| product_id | VARCHAR(10) | Product ID |
+| quantity_kg | INT | Quantity in kilograms |
+| origin_city | VARCHAR(50) | Shipment origin |
+| destination_city | VARCHAR(50) | Shipment destination |
+| dispatch_time | DATETIME | Dispatch time |
+| expected_delivery | DATETIME | Expected delivery time |
+| driver_id | VARCHAR(10) | Driver ID |
+| transport_company | VARCHAR(100) | Transport company |
+
+---
+
 
 # 📈 Dashboard Features
 
