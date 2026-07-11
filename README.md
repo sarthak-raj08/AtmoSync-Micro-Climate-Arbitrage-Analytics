@@ -361,7 +361,24 @@ Contains master details of all refrigerated containers.
 | status | VARCHAR(20) | Active or Maintenance |
 
 ---
+## 4. commodity_prices.csv
 
+### Description
+
+Contains commodity prices collected from different markets.
+
+### Columns
+
+| Column | Data Type | Description |
+|---------|-----------|-------------|
+| date | DATE | Price date |
+| city | VARCHAR(50) | Market city |
+| product | VARCHAR(50) | Product name |
+| market_price_per_kg | DECIMAL(8,2) | Price per kilogram |
+| demand_index | INT | Demand score |
+| supply_index | INT | Supply score |
+
+---
 
 # 📈 Dashboard Features
 
