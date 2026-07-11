@@ -379,6 +379,29 @@ Contains commodity prices collected from different markets.
 | supply_index | INT | Supply score |
 
 ---
+## 5. market_locations.csv
+
+### Description
+
+Contains information about nearby markets.
+
+### Primary Key
+
+`market_id`
+
+### Columns
+
+| Column | Data Type | Description |
+|---------|-----------|-------------|
+| market_id | VARCHAR(10) | Market ID |
+| city | VARCHAR(50) | City |
+| latitude | DECIMAL(10,6) | Latitude |
+| longitude | DECIMAL(10,6) | Longitude |
+| avg_price | DECIMAL(8,2) | Average product price |
+| demand_level | VARCHAR(20) | Low, Medium or High |
+| operating_hours | VARCHAR(30) | Market operating hours |
+
+---
 
 # 📈 Dashboard Features
 
