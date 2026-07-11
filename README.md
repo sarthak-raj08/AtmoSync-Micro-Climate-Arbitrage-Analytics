@@ -260,6 +260,16 @@ Apache Superset provides interactive dashboards displaying:
 | risk_level |
 
 ---
+# Dataset List
+
+| Dataset | Description |
+|----------|-------------|
+| container_sensor_data.csv | IoT sensor readings generated from refrigerated containers |
+| shipment_master.csv | Shipment information for each container |
+| container_master.csv | Master information about containers |
+| commodity_prices.csv | Daily commodity prices from different markets |
+| market_locations.csv | Market location information |
+| spoilage_rules.csv | Business rules for spoilage prediction |
 
 # 📈 Dashboard Features
 
