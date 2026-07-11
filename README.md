@@ -271,6 +271,43 @@ Apache Superset provides interactive dashboards displaying:
 | market_locations.csv | Market location information |
 | spoilage_rules.csv | Business rules for spoilage prediction |
 
+# Dataset Details
+
+## 1. container_sensor_data.csv
+
+### Description
+
+Stores real-time IoT sensor readings collected from refrigerated containers.
+
+### Primary Key
+
+`sensor_id`
+
+### Foreign Keys
+
+- `container_id` → container_master.container_id
+- `shipment_id` → shipment_master.shipment_id
+
+### Columns
+
+| Column | Data Type | Description |
+|---------|-----------|-------------|
+| sensor_id | INT | Unique sensor reading ID |
+| timestamp | DATETIME | Date and time of reading |
+| container_id | VARCHAR(10) | Container ID |
+| shipment_id | VARCHAR(15) | Shipment ID |
+| route_id | VARCHAR(10) | Route ID |
+| temperature_c | DECIMAL(5,2) | Temperature in Celsius |
+| humidity_percent | DECIMAL(5,2) | Humidity percentage |
+| vibration_level | DECIMAL(5,2) | Vibration intensity |
+| door_status | VARCHAR(10) | OPEN or CLOSED |
+| gps_latitude | DECIMAL(10,6) | GPS latitude |
+| gps_longitude | DECIMAL(10,6) | GPS longitude |
+| battery_percent | INT | Sensor battery level |
+| network_signal | VARCHAR(20) | Strong, Medium or Weak |
+
+---
+
 # 📈 Dashboard Features
 
 - Live IoT Monitoring
