@@ -402,6 +402,29 @@ Contains information about nearby markets.
 | operating_hours | VARCHAR(30) | Market operating hours |
 
 ---
+## 6. spoilage_rules.csv
+
+### Description
+
+Contains business rules used to determine spoilage risk.
+
+### Primary Key
+
+`rule_id`
+
+### Columns
+
+| Column | Data Type | Description |
+|---------|-----------|-------------|
+| rule_id | INT | Rule ID |
+| min_temp | DECIMAL(5,2) | Minimum temperature |
+| max_temp | DECIMAL(5,2) | Maximum temperature |
+| humidity | DECIMAL(5,2) | Humidity threshold |
+| vibration | DECIMAL(5,2) | Vibration threshold |
+| spoilage_percentage | DECIMAL(5,2) | Estimated spoilage percentage |
+| risk_level | VARCHAR(20) | Low, Medium or High |
+
+---
 
 # 📈 Dashboard Features
 
