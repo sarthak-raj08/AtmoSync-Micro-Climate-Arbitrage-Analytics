@@ -214,52 +214,6 @@ Apache Superset provides interactive dashboards displaying:
 
 ---
 
-# 🗂️ Expected Database Tables
-
-### sensor_data
-
-| Column |
-|----------|
-| container_id |
-| temperature |
-| humidity |
-| vibration |
-| timestamp |
-
----
-
-### commodity_prices
-
-| Column |
-|----------|
-| commodity |
-| market |
-| price |
-| updated_time |
-
----
-
-### shipment_routes
-
-| Column |
-|----------|
-| container_id |
-| current_location |
-| destination |
-| distance |
-
----
-
-### spoilage_prediction
-
-| Column |
-|----------|
-| container_id |
-| spoilage_score |
-| remaining_life |
-| risk_level |
-
----
 # Dataset List
 
 | Dataset | Description |
