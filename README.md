@@ -448,7 +448,7 @@ AtmoSync/
 4. Transform data using dbt
 5. Calculate spoilage metrics
 6. Compute arbitrage opportunities
-7. Visualize insights in Apache Superset
+7. Visualize insights in Power BI
 8. Trigger business alerts
 9. Enable data-driven shipment decisions
 
