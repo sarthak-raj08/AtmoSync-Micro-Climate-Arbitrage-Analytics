@@ -135,3 +135,17 @@ The final module generates business alerts for:
 These alerts help businesses make informed decisions before products are damaged.
 
 ---
+## Technologies Used
+
+| Technology | Purpose |
+|------------|---------|
+| Python | Data Generation |
+| Apache Kafka | Real-Time Streaming |
+| Snowflake | Data Warehousing |
+| dbt | Data Transformation |
+| SQL | Data Analysis |
+| Power BI | Dashboard Creation |
+| Git & GitHub | Version Control |
+| VS Code | Development Environment |
+
+---
