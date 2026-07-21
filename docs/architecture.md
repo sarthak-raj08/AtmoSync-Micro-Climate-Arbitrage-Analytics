@@ -149,3 +149,34 @@ These alerts help businesses make informed decisions before products are damaged
 | VS Code | Development Environment |
 
 ---
+## Project Workflow
+
+Raw Sensor Data
+        ↓
+Python Simulator
+        ↓
+Apache Kafka
+        ↓
+Snowflake
+        ↓
+dbt Transformations
+        ↓
+SQL Analysis
+        ↓
+Power BI Dashboard
+        ↓
+Business Alerts
+        ↓
+Decision Support System
+
+---
+## Expected Output
+
+The project provides:
+
+- Real-time shipment monitoring.
+- Spoilage prediction.
+- Market price analysis.
+- Risk analysis.
+- Business intelligence dashboards.
+- Automated business alerts.
