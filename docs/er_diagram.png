@@ -1,0 +1,80 @@
+                    container_master
+                    -----------------
+                    container_id (PK)
+                    container_type
+                    capacity_kg
+                    manufacturer
+                    installation_date
+                    status
+                    battery_percentage
+                             |
+                             |
+                       (1 : M)
+                             |
+                             |
+                             ▼
+                     shipment_master
+                    ------------------
+                     shipment_id (PK)
+                     container_id (FK)
+                     commodity_name
+                     source_location
+                     destination_location
+                     shipment_date
+                     expected_delivery
+                     shipment_status
+                             |
+                             |
+                       (1 : M)
+                             |
+                             |
+                             ▼
+                  container_sensor_data
+                  ----------------------
+                     sensor_id (PK)
+                     shipment_id (FK)
+                     container_id (FK)
+                     temperature_c
+                     humidity_percentage
+                     latitude
+                     longitude
+                     battery_percentage
+                     timestamp
+                             |
+                             |
+                       (Business Rules)
+                             |
+                             ▼
+                      spoilage_rules
+                     ----------------
+                        rule_id (PK)
+                        commodity_name
+                        minimum_temperature
+                        maximum_temperature
+                        minimum_humidity
+                        maximum_humidity
+                        spoilage_percentage
+
+
+
+
+                   market_locations
+                   ----------------
+                    market_id (PK)
+                    market_name
+                    city
+                    state
+                    latitude
+                    longitude
+                            |
+                            |
+                         (1:M)
+                            |
+                            ▼
+                     commodity_prices
+                    -----------------
+                     commodity_id (PK)
+                     market_id (FK)
+                     commodity_name
+                     price_per_kg
+                     last_updated
