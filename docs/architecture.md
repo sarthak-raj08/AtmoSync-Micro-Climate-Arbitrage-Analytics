@@ -135,3 +135,48 @@ The final module generates business alerts for:
 These alerts help businesses make informed decisions before products are damaged.
 
 ---
+## Technologies Used
+
+| Technology | Purpose |
+|------------|---------|
+| Python | Data Generation |
+| Apache Kafka | Real-Time Streaming |
+| Snowflake | Data Warehousing |
+| dbt | Data Transformation |
+| SQL | Data Analysis |
+| Power BI | Dashboard Creation |
+| Git & GitHub | Version Control |
+| VS Code | Development Environment |
+
+---
+## Project Workflow
+
+Raw Sensor Data
+        ↓
+Python Simulator
+        ↓
+Apache Kafka
+        ↓
+Snowflake
+        ↓
+dbt Transformations
+        ↓
+SQL Analysis
+        ↓
+Power BI Dashboard
+        ↓
+Business Alerts
+        ↓
+Decision Support System
+
+---
+## Expected Output
+
+The project provides:
+
+- Real-time shipment monitoring.
+- Spoilage prediction.
+- Market price analysis.
+- Risk analysis.
+- Business intelligence dashboards.
+- Automated business alerts.
