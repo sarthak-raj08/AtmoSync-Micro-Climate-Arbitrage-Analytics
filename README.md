@@ -493,11 +493,3 @@ This project is being developed as part of an **Advanced Data Analytics & Engine
 The objective is to build a production-style, real-time data engineering solution using modern cloud-native technologies and industry best practices.
 
 ---
-
-# 📄 License
-
-This project is intended for educational and internship purposes.
-
----
-
-## ⭐ If you found this project interesting, don't forget to give it a Star!
