@@ -1,1 +1,0 @@
-TOPIC = "container_sensor"

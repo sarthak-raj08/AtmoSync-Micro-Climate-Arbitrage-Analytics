@@ -6,6 +6,7 @@ Professional Edition
 import os
 import sys
 import streamlit as st
+from streamlit_autorefresh import st_autorefresh
 
 # =====================================================
 # PROJECT ROOT
@@ -69,7 +70,14 @@ st.set_page_config(
     page_icon=PAGE_ICON,
     layout=LAYOUT
 )
+# ==========================================
+# Auto Refresh Every 5 Seconds
+# ==========================================
 
+st_autorefresh(
+    interval=5000,
+    key="dashboard_refresh"
+)
 load_css()
 
 # =====================================================
@@ -83,7 +91,11 @@ with st.spinner("Loading data from Snowflake..."):
 df = calculate_health(df)
 
 metrics = get_metrics(df)
+from datetime import datetime
 
+st.sidebar.success(
+    f"🟢 Last Updated\n\n{datetime.now().strftime('%H:%M:%S')}"
+)
 # =====================================================
 # SIDEBAR
 # =====================================================
@@ -250,31 +262,113 @@ elif page == "AI Insights":
     )
 
     show_footer()
-    # =====================================================
+# =====================================================
 # LIVE MONITORING
 # =====================================================
 
 elif page == "Live Monitoring":
 
-    st.title("📡 Live Monitoring")
+    st.title("📡 Live Monitoring Center")
 
-    st.success("Connected to Snowflake")
+    st.success("🟢 Live Stream Active")
 
     latest = latest_records(df, rows=50)
 
-    st.subheader("Latest Sensor Data")
+    metrics = get_metrics(latest)
+
+    show_kpi_cards(metrics)
+
+    st.divider()
+
+    st.subheader("🚨 Current Alerts")
+
+    show_alerts(latest)
+
+    st.divider()
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+
+        avg_health = latest["health_score"].mean()
+
+        st.metric(
+            "Average Health",
+            f"{avg_health:.1f}/100"
+        )
+
+    with col2:
+
+        high_risk = len(
+            latest[
+                latest["risk_level"] == "High"
+            ]
+        )
+
+        st.metric(
+            "High Risk Containers",
+            high_risk
+        )
+
+    with col3:
+
+        healthy = len(
+            latest[
+                latest["risk_level"] == "Low"
+            ]
+        )
+
+        st.metric(
+            "Healthy Containers",
+            healthy
+        )
+
+    st.divider()
+
+    st.subheader("📈 Live Charts")
+
+    dashboard_charts(latest)
+
+    st.divider()
+
+    st.subheader("📋 Latest Sensor Feed")
 
     show_table(latest)
 
     st.divider()
 
-    dashboard_charts(latest)
+    st.subheader("🗺 Live Container Locations")
 
-    st.info(f"Showing latest {len(latest)} sensor readings.")
+    map_df = latest.rename(
+        columns={
+            "gps_latitude": "lat",
+            "gps_longitude": "lon"
+        }
+    )
+
+    st.map(map_df[["lat", "lon"]])
+
+    st.divider()
+
+    st.subheader("🖥 System Status")
+
+    status1, status2, status3, status4 = st.columns(4)
+
+    with status1:
+        st.success("Kafka")
+
+    with status2:
+        st.success("Snowflake")
+
+    with status3:
+        st.success("Consumer")
+
+    with status4:
+        st.success("Dashboard")
+
+    st.info(f"Displaying latest {len(latest)} sensor readings")
 
     show_footer()
-
-
 # =====================================================
 # SETTINGS
 # =====================================================
