@@ -1,0 +1,35 @@
+version: 2
+
+models:
+
+  - name: stg_sensor_data
+
+    columns:
+
+      - name: sensor_id
+        tests:
+          - not_null
+
+      - name: timestamp
+        tests:
+          - not_null
+
+      - name: container_id
+        tests:
+          - not_null
+
+  - name: int_health_score
+
+    columns:
+
+      - name: health_score
+
+      - name: risk_level
+
+  - name: int_spoilage
+
+    columns:
+
+      - name: spoilage_probability
+
+      - name: spoilage_status
