@@ -1,437 +1,117 @@
-# 🌦️ AtmoSync - Micro-Climate Arbitrage Analytics
+# 🌍 AtmoSync: Micro-Climate Arbitrage Analytics
 
-> An end-to-end real-time data engineering and analytics platform that monitors micro-climate conditions inside commodity shipping containers to predict spoilage risk, identify arbitrage opportunities, and enable intelligent shipment rerouting.
+> **Real-Time IoT Supply Chain Analytics Platform using Apache Kafka, Snowflake, dbt, and Streamlit**
 
-![Status](https://img.shields.io/badge/Status-In%20Development-orange)
-![Python](https://img.shields.io/badge/Python-3.11-blue?logo=python)
-![Apache Kafka](https://img.shields.io/badge/Apache-Kafka-black?logo=apachekafka)
-![Snowflake](https://img.shields.io/badge/Snowflake-Cloud%20Warehouse-29B5E8?logo=snowflake)
-![dbt](https://img.shields.io/badge/dbt-Analytics%20Engineering-FF694B?logo=dbt)
-![Apache Superset](https://img.shields.io/badge/Apache-Superset-20A6C9)
-![SQL](https://img.shields.io/badge/SQL-Analytics-blue)
-![License](https://img.shields.io/badge/License-MIT-green)
+AtmoSync is an end-to-end real-time data engineering and analytics platform that continuously monitors agricultural shipment containers using IoT sensor data. The system predicts spoilage, calculates container health, identifies arbitrage opportunities, and provides live alerts to help traders maximize profit before commodity quality degrades.
 
 ---
 
-# 📌 Project Overview
+# 🚀 Features
 
-Traditional supply chain systems primarily rely on GPS tracking and macro-level weather forecasts. However, they often fail to monitor the **real-time environmental conditions inside shipping containers**, where sudden changes in temperature, humidity, or vibration can significantly reduce the quality and shelf life of perishable goods.
-
-**AtmoSync** is a real-time analytics platform that leverages IoT sensor streams, cloud data warehousing, modern ELT pipelines, and interactive dashboards to monitor container health, predict spoilage, calculate arbitrage opportunities, and recommend optimal rerouting decisions before financial losses occur.
-
----
-
-# 🚀 Business Problem
-
-Perishable commodities such as fruits and vegetables can deteriorate rapidly during transportation due to:
-
-- Rising internal temperature
-- Excessive humidity
-- Continuous vibration
-- Delayed delivery routes
-
-These factors often remain undetected until products reach their destination, resulting in:
-
-- Product spoilage
-- Revenue loss
-- Customer dissatisfaction
-- Supply chain inefficiencies
-
-AtmoSync addresses these challenges through continuous monitoring and predictive analytics.
+- Real-Time IoT Sensor Simulation
+- Apache Kafka Streaming Pipeline
+- Snowflake Cloud Data Warehouse
+- dbt ELT Data Transformation
+- Streamlit Interactive Dashboard
+- Health Score Prediction
+- Spoilage Prediction
+- Route Optimization
+- Market Arbitrage Recommendation
+- Live Container Monitoring
+- Email Alert System
+- Live Maps
+- Automated Data Pipeline
 
 ---
 
-# 🎯 Project Objectives
+# 🏗 System Architecture
 
-- Stream real-time IoT sensor data
-- Monitor container environmental conditions
-- Predict spoilage risk
-- Calculate Spoilage Arbitrage opportunities
-- Recommend optimal rerouting destinations
-- Build automated ELT pipelines
-- Visualize operational insights through interactive dashboards
-
----
-
-# 💼 Business Use Case
-
-A commodities trader monitors avocado shipments across multiple locations.
-
-When the system detects that the temperature inside a shipping container exceeds the acceptable threshold, AtmoSync estimates the remaining shelf life of the products.
-
-Instead of delivering the shipment to its original destination, the platform recommends rerouting it to a nearby market where the products can be sold before spoilage occurs, maximizing profit while minimizing waste.
-
----
-
-# 🏗️ System Architecture
-
-```
-IoT Sensors
-      │
-      ▼
-Python IoT Simulator
-      │
-      ▼
-Apache Kafka
-      │
-      ▼
-Snowflake Data Warehouse
-      │
-      ▼
-dbt ELT Models
-      │
-      ▼
-Power BI Dashboard
-      │
-      ▼
-Business Alerts & Decision Support
+```text
+                 IoT Sensor Simulator
+                          │
+                          ▼
+                  Apache Kafka Producer
+                          │
+                          ▼
+                     Kafka Topic
+                          │
+                          ▼
+                  Apache Kafka Consumer
+                          │
+        ┌─────────────────┴─────────────────┐
+        │                                   │
+        ▼                                   ▼
+ Analytics Engine                  Snowflake Database
+        │                                   │
+        ▼                                   ▼
+ Health Score                      dbt ELT Pipeline
+ Spoilage Prediction                      │
+ Route Optimization                       ▼
+ Arbitrage Engine                 Analytical Models
+        │                                   │
+        └───────────────┬───────────────────┘
+                        ▼
+               Streamlit Dashboard
+                        │
+                        ▼
+                 Email Notifications
 ```
 
 ---
 
-# ⚙️ Technology Stack
+# ⚙ Technology Stack
 
-| Category | Technology |
-|----------|------------|
-| Programming | Python |
-| Streaming Platform | Apache Kafka |
-| Cloud Data Warehouse | Snowflake |
-| Data Transformation | dbt Core |
-| Database Language | SQL |
-| Business Intelligence | Power BI |
-| Alerting | Slack / Email |
+| Layer | Technology |
+|--------|------------|
+| Programming Language | Python 3.10 |
+| Streaming | Apache Kafka |
+| Cloud Warehouse | Snowflake |
+| ELT | dbt Core |
+| Dashboard | Streamlit |
+| Visualization | Plotly |
+| Analytics | Pandas |
+| Alerts | SMTP Email |
+| Database Connector | Snowflake Connector |
 | Version Control | Git & GitHub |
 
 ---
 
-# 📂 Project Modules
+# 📂 Project Structure
 
-## 1. IoT Data Simulation
-
-A Python-based simulator continuously generates synthetic sensor data representing shipping container conditions.
-
-Generated parameters include:
-
-- Temperature
-- Humidity
-- Vibration
-- Timestamp
-- Container ID
-
----
-
-## 2. Real-Time Data Streaming
-
-Apache Kafka acts as the event streaming platform responsible for:
-
-- Publishing sensor events
-- Managing streaming topics
-- Delivering real-time data reliably
-- Handling high-throughput ingestion
-
----
-
-## 3. Cloud Data Warehouse
-
-Snowflake stores:
-
-- Raw IoT sensor data
-- Historical commodity prices
-- Shipment information
-- Market data
-- Processed analytical datasets
-
----
-
-## 4. Data Transformation
-
-dbt transforms raw sensor streams into analytical models by:
-
-- Cleaning data
-- Removing duplicates
-- Handling missing values
-- Creating staging models
-- Building business metrics
-- Calculating spoilage scores
-
----
-
-## 5. Spoilage Prediction Engine
-
-Business logic estimates:
-
-- Remaining shelf life
-- Spoilage probability
-- Container health status
-- Risk level
-
----
-
-## 6. Arbitrage Analytics
-
-The platform compares:
-
-- Current market price
-- Nearby market prices
-- Transportation cost
-- Predicted spoilage
-
-to calculate:
-
-**Spoilage Arbitrage**
-
-This helps determine whether rerouting a shipment will generate additional profit.
-
----
-
-## 7. Dashboard & Reporting
-
-Apache Superset provides interactive dashboards displaying:
-
-- Live container monitoring
-- Temperature trends
-- Humidity analysis
-- High-risk shipments
-- Spoilage predictions
-- Arbitrage opportunities
-- Shipment recommendations
-- Executive KPIs
-
----
-
-# 📊 Key Performance Indicators (KPIs)
-
-- Total Active Containers
-- Average Temperature
-- Average Humidity
-- High-Risk Containers
-- Spoilage Probability
-- Predicted Financial Loss
-- Arbitrage Profit
-- Shipment Health Score
-- Remaining Shelf Life
-- Live Operational Alerts
-
----
-
-# Dataset List
-
-| Dataset | Description |
-|----------|-------------|
-| container_sensor_data.csv | IoT sensor readings generated from refrigerated containers |
-| shipment_master.csv | Shipment information for each container |
-| container_master.csv | Master information about containers |
-| commodity_prices.csv | Daily commodity prices from different markets |
-| market_locations.csv | Market location information |
-| spoilage_rules.csv | Business rules for spoilage prediction |
-
-# Dataset Details
-
-## 1. container_sensor_data.csv
-
-### Description
-
-Stores real-time IoT sensor readings collected from refrigerated containers.
-
-### Primary Key
-
-`sensor_id`
-
-### Foreign Keys
-
-- `container_id` → container_master.container_id
-- `shipment_id` → shipment_master.shipment_id
-
-### Columns
-
-| Column | Data Type | Description |
-|---------|-----------|-------------|
-| sensor_id | INT | Unique sensor reading ID |
-| timestamp | DATETIME | Date and time of reading |
-| container_id | VARCHAR(10) | Container ID |
-| shipment_id | VARCHAR(15) | Shipment ID |
-| route_id | VARCHAR(10) | Route ID |
-| temperature_c | DECIMAL(5,2) | Temperature in Celsius |
-| humidity_percent | DECIMAL(5,2) | Humidity percentage |
-| vibration_level | DECIMAL(5,2) | Vibration intensity |
-| door_status | VARCHAR(10) | OPEN or CLOSED |
-| gps_latitude | DECIMAL(10,6) | GPS latitude |
-| gps_longitude | DECIMAL(10,6) | GPS longitude |
-| battery_percent | INT | Sensor battery level |
-| network_signal | VARCHAR(20) | Strong, Medium or Weak |
-
----
-## 2. shipment_master.csv
-
-### Description
-
-Contains shipment information for each container.
-
-### Primary Key
-
-`shipment_id`
-
-### Foreign Key
-
-`container_id` → container_master.container_id
-
-### Columns
-
-| Column | Data Type | Description |
-|---------|-----------|-------------|
-| shipment_id | VARCHAR(15) | Shipment ID |
-| container_id | VARCHAR(10) | Container ID |
-| product_id | VARCHAR(10) | Product ID |
-| quantity_kg | INT | Quantity in kilograms |
-| origin_city | VARCHAR(50) | Shipment origin |
-| destination_city | VARCHAR(50) | Shipment destination |
-| dispatch_time | DATETIME | Dispatch time |
-| expected_delivery | DATETIME | Expected delivery time |
-| driver_id | VARCHAR(10) | Driver ID |
-| transport_company | VARCHAR(100) | Transport company |
-
----
-## 3. container_master.csv
-
-### Description
-
-Contains master details of all refrigerated containers.
-
-### Primary Key
-
-`container_id`
-
-### Columns
-
-| Column | Data Type | Description |
-|---------|-----------|-------------|
-| container_id | VARCHAR(10) | Container ID |
-| container_type | VARCHAR(30) | Container type |
-| max_temperature | DECIMAL(5,2) | Maximum safe temperature |
-| max_humidity | DECIMAL(5,2) | Maximum safe humidity |
-| refrigeration_type | VARCHAR(30) | Cooling system |
-| capacity_kg | INT | Capacity in kilograms |
-| manufacture_year | INT | Manufacturing year |
-| status | VARCHAR(20) | Active or Maintenance |
-
----
-## 4. commodity_prices.csv
-
-### Description
-
-Contains commodity prices collected from different markets.
-
-### Columns
-
-| Column | Data Type | Description |
-|---------|-----------|-------------|
-| date | DATE | Price date |
-| city | VARCHAR(50) | Market city |
-| product | VARCHAR(50) | Product name |
-| market_price_per_kg | DECIMAL(8,2) | Price per kilogram |
-| demand_index | INT | Demand score |
-| supply_index | INT | Supply score |
-
----
-## 5. market_locations.csv
-
-### Description
-
-Contains information about nearby markets.
-
-### Primary Key
-
-`market_id`
-
-### Columns
-
-| Column | Data Type | Description |
-|---------|-----------|-------------|
-| market_id | VARCHAR(10) | Market ID |
-| city | VARCHAR(50) | City |
-| latitude | DECIMAL(10,6) | Latitude |
-| longitude | DECIMAL(10,6) | Longitude |
-| avg_price | DECIMAL(8,2) | Average product price |
-| demand_level | VARCHAR(20) | Low, Medium or High |
-| operating_hours | VARCHAR(30) | Market operating hours |
-
----
-## 6. spoilage_rules.csv
-
-### Description
-
-Contains business rules used to determine spoilage risk.
-
-### Primary Key
-
-`rule_id`
-
-### Columns
-
-| Column | Data Type | Description |
-|---------|-----------|-------------|
-| rule_id | INT | Rule ID |
-| min_temp | DECIMAL(5,2) | Minimum temperature |
-| max_temp | DECIMAL(5,2) | Maximum temperature |
-| humidity | DECIMAL(5,2) | Humidity threshold |
-| vibration | DECIMAL(5,2) | Vibration threshold |
-| spoilage_percentage | DECIMAL(5,2) | Estimated spoilage percentage |
-| risk_level | VARCHAR(20) | Low, Medium or High |
-
----
-
-# 📈 Dashboard Features
-
-- Live IoT Monitoring
-- Real-Time Temperature Analysis
-- Humidity Monitoring
-- Spoilage Risk Gauge
-- Arbitrage Opportunity Dashboard
-- Shipment Health Overview
-- Commodity Price Comparison
-- Route Optimization Insights
-- Executive Summary
-- Automated Alert Panel
-
----
-
-# 📁 Proposed Project Structure
-
-```
-AtmoSync/
+```text
+AtmoSync
 │
-├── data/
-│   ├── raw/
-│   ├── processed/
-│   └── pricing/
+├── analytics
+│   ├── health_score.py
+│   ├── spoilage_prediction.py
+│   ├── route_optimizer.py
+│   └── arbitrage_engine.py
 │
-├── kafka/
+├── alerts
+│   ├── alert_engine.py
+│   └── email_alert.py
+│
+├── dashboard
+│   └── app.py
+│
+├── database
+│   └── snowflake_db.py
+│
+├── kafka
 │   ├── producer.py
-│   ├── consumer.py
-│   └── topics.py
+│   └── consumer.py
 │
-├── simulator/
-│   └── iot_simulator.py
+├── dbt
+│   ├── models
+│   ├── staging
+│   ├── intermediate
+│   ├── marts
+│   ├── tests
+│   ├── dbt_project.yml
+│   ├── packages.yml
+│   └── profiles.yml
 │
-├── snowflake/
-│   ├── schema.sql
-│   └── tables.sql
-│
-├── dbt/
-│   ├── models/
-│   ├── staging/
-│   └── marts/
-│
-├── dashboard/
-│   └── superset/
-│
-├── sql/
-│
-├── notebooks/
-│
-├── docs/
-│
-├── screenshots/
+├── simulator
 │
 ├── requirements.txt
 │
@@ -440,56 +120,347 @@ AtmoSync/
 
 ---
 
-# 🔄 End-to-End Workflow
+# 📊 Analytics Modules
 
-1. Generate IoT sensor data
-2. Publish events to Apache Kafka
-3. Stream data into Snowflake
-4. Transform data using dbt
-5. Calculate spoilage metrics
-6. Compute arbitrage opportunities
-7. Visualize insights in Power BI
-8. Trigger business alerts
-9. Enable data-driven shipment decisions
+## Health Score Engine
 
----
+Calculates overall container health based on:
 
-# 📚 Learning Outcomes
+- Temperature
+- Humidity
+- Battery
+- Network Signal
+- Door Status
+- Vibration
 
-Through this project, we gain practical experience in:
+Outputs
 
-- Modern Data Engineering
-- Event Streaming
-- Cloud Data Warehousing
-- Analytics Engineering
-- ELT Pipeline Development
-- SQL Data Modelling
-- Business Intelligence
-- Real-Time Dashboard Development
-- Supply Chain Analytics
-- IoT Data Processing
+- Health Score
+- Risk Level
 
 ---
 
-# 📌 Future Enhancements
+## Spoilage Prediction
 
-- Machine Learning-based spoilage prediction
-- Predictive route optimization
-- GIS map visualization
-- Live GPS tracking
-- Mobile notification support
-- Power BI integration
-- REST API development
-- Docker containerization
-- Kubernetes deployment
-- CI/CD automation
+Predicts
+
+- Spoilage Probability
+- Product Status
+- Shelf-Life Risk
 
 ---
 
-# 👨‍💻 Team Project
+## Route Optimization
 
-This project is being developed as part of an **Advanced Data Analytics & Engineering Internship**.
+Suggests
 
-The objective is to build a production-style, real-time data engineering solution using modern cloud-native technologies and industry best practices.
+- Continue Delivery
+- Reroute Shipment
+- Immediate Inspection
 
 ---
+
+## Arbitrage Engine
+
+Calculates
+
+- Best Market
+- Market Price
+- Demand Index
+- Supply Index
+- Financial Recommendation
+
+---
+
+# 🚨 Alert Engine
+
+Automatically detects
+
+- High Temperature
+- High Humidity
+- Low Battery
+- Weak Network
+- Door Open
+- High Vibration
+
+Alerts are displayed
+
+- Console
+- Dashboard
+- Email
+
+---
+
+# 📈 Dashboard
+
+The Streamlit dashboard provides
+
+- Live KPI Cards
+- Health Score
+- Spoilage Analysis
+- Market Arbitrage
+- Live Charts
+- Sensor Feed
+- Container Map
+- Alert Monitoring
+- System Status
+
+Dashboard refreshes automatically every few seconds.
+
+---
+
+# 🗄 Snowflake
+
+Stores
+
+- Raw Sensor Data
+- Historical Data
+- Analytics Models
+- Dashboard Tables
+
+---
+
+# 🔄 dbt Pipeline
+
+### Staging
+
+- stg_sensor_data
+
+### Intermediate
+
+- int_health_score
+- int_spoilage
+
+### Mart
+
+- mart_dashboard
+- mart_arbitrage
+
+Successfully tested using
+
+```bash
+dbt run
+dbt test
+dbt docs generate
+dbt docs serve
+```
+
+---
+
+# 📡 Data Pipeline
+
+```text
+IoT Simulator
+
+↓
+
+Kafka Producer
+
+↓
+
+Kafka Topic
+
+↓
+
+Kafka Consumer
+
+↓
+
+Analytics Engine
+
+↓
+
+Snowflake
+
+↓
+
+dbt Models
+
+↓
+
+Streamlit Dashboard
+
+↓
+
+Email Alerts
+```
+
+---
+
+# ▶ Running the Project
+
+## 1. Clone Repository
+
+```bash
+git clone https://github.com/lucasratna/AtmoSync-Micro-Climate-Arbitrage-Analytics.git
+```
+
+---
+
+## 2. Create Virtual Environment
+
+```bash
+python -m venv venv
+```
+
+---
+
+## 3. Activate Environment
+
+Windows
+
+```bash
+venv\Scripts\activate
+```
+
+Linux
+
+```bash
+source venv/bin/activate
+```
+
+---
+
+## 4. Install Requirements
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 5. Start Kafka Producer
+
+```bash
+python kafka/producer.py
+```
+
+---
+
+## 6. Start Kafka Consumer
+
+```bash
+python kafka/consumer.py
+```
+
+---
+
+## 7. Launch Dashboard
+
+```bash
+streamlit run dashboard/app.py
+```
+
+---
+
+## 8. Execute dbt Models
+
+```bash
+cd dbt
+
+dbt run --profiles-dir .
+
+dbt test --profiles-dir .
+
+dbt docs generate --profiles-dir .
+
+dbt docs serve --profiles-dir .
+```
+
+---
+
+# 📌 Project Workflow
+
+```text
+IoT Sensors
+      │
+      ▼
+Kafka Streaming
+      │
+      ▼
+Consumer Analytics
+      │
+      ▼
+Snowflake Storage
+      │
+      ▼
+dbt Transformation
+      │
+      ▼
+Dashboard
+      │
+      ▼
+Email Alerts
+```
+
+---
+
+# 📧 Email Notifications
+
+Automatically sends email when
+
+- Temperature exceeds threshold
+- Spoilage risk increases
+- Door opens unexpectedly
+- Battery becomes critical
+- Network becomes weak
+
+Duplicate alerts are automatically avoided.
+
+---
+
+# 📚 Future Enhancements
+
+- Docker Deployment
+- Apache Airflow Scheduling
+- Kubernetes Deployment
+- REST APIs
+- Machine Learning Models
+- Mobile Dashboard
+- Slack Integration
+- SMS Alerts
+- WhatsApp Notifications
+- Multi-Warehouse Monitoring
+
+---
+
+# 👨‍💻 Author
+
+**Lucas Ratna Lauretta**
+
+B.Tech Information Technology
+
+BVRIT Hyderabad College of Engineering for Women
+
+GitHub:
+https://github.com/lucasratna
+
+LinkedIn:
+https://www.linkedin.com/in/lucas-ratna-lauretta-47b26b345/
+
+---
+
+# ✅ Project Status
+
+| Module | Status |
+|---------|--------|
+| Kafka Producer | ✅ |
+| Kafka Consumer | ✅ |
+| IoT Simulator | ✅ |
+| Snowflake Integration | ✅ |
+| Health Score Engine | ✅ |
+| Spoilage Prediction | ✅ |
+| Route Optimization | ✅ |
+| Arbitrage Engine | ✅ |
+| Alert Engine | ✅ |
+| Email Notifications | ✅ |
+| Streamlit Dashboard | ✅ |
+| dbt Pipeline | ✅ |
+| dbt Documentation | ✅ |
+| Live Monitoring | ✅ |
+
+---
+
+# ⭐ Result
+
+AtmoSync demonstrates a complete real-time data engineering workflow combining streaming analytics, cloud warehousing, ELT modeling, predictive analytics, and business intelligence for intelligent agricultural supply chain optimization.
