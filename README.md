@@ -9,150 +9,145 @@
 
 ---
 
-## 📌 Overview
+# 📌 Overview
 
 AtmoSync is a real-time supply chain analytics platform designed to monitor agricultural shipments using IoT sensor streams.
 
 Instead of relying only on weather forecasts and delivery schedules, AtmoSync continuously analyzes micro-climate conditions inside shipping containers to detect spoilage risks before they occur.
 
-The platform streams live sensor data through Apache Kafka, stores it in Snowflake, transforms it using dbt, and visualizes business insights through an interactive dashboard.
+The platform streams live sensor data through Apache Kafka, stores data in Snowflake, transforms it using dbt, and provides business insights through an interactive Streamlit dashboard.
 
 ---
 
-## 🎯 Problem Statement
+# 🎯 Problem Statement
 
 Agricultural commodities such as fruits and vegetables are highly sensitive to environmental conditions during transportation.
 
-Even small temperature or humidity changes can lead to:
+Small changes in:
 
-- Food spoilage
-- Financial losses
-- Reduced product quality
-- Missed market opportunities
+* Temperature
+* Humidity
+* Vibration
+* Battery status
+* Network conditions
 
-Traditional logistics systems cannot detect these issues early enough.
+can lead to:
 
-AtmoSync solves this problem by combining streaming analytics with cloud data engineering.
+* Food spoilage
+* Financial losses
+* Reduced product quality
+* Missed market opportunities
+
+AtmoSync solves this problem by combining IoT streaming, cloud data engineering, predictive analytics, and real-time decision intelligence.
 
 ---
 
 # 🚀 Features
 
 ✔ Real-time IoT Sensor Streaming
-
-✔ Kafka Event Streaming Pipeline
-
+✔ Apache Kafka Event Streaming Pipeline
 ✔ Snowflake Cloud Data Warehouse
-
 ✔ dbt ELT Data Transformation
-
-✔ Live Health Score Calculation
-
+✔ Container Health Score Calculation
 ✔ Spoilage Prediction Engine
-
 ✔ Route Optimization
-
-✔ Arbitrage Opportunity Detection
-
+✔ Market Arbitrage Detection
 ✔ Email Alert System
-
 ✔ Streamlit Live Dashboard
-
 ✔ Interactive Maps
-
 ✔ Historical Analytics
-
-✔ Automated Data Quality Tests
+✔ Automated Data Quality Testing
 
 ---
 
 # 🏗 System Architecture
 
-```
-IoT Simulator
-      │
-      ▼
-Apache Kafka
-      │
-      ▼
-Kafka Consumer
-      │
-      ▼
-Analytics Engine
-      │
- ┌──────────────┐
- │Health Score  │
- │Spoilage AI   │
- │Route Engine  │
- │Arbitrage AI  │
- └──────────────┘
-      │
-      ▼
-Snowflake
-      │
-      ▼
-dbt Models
-      │
-      ▼
-Streamlit Dashboard
-      │
-      ▼
-Email Alerts
+```text
+                 IoT Sensor Simulator
+                          │
+                          ▼
+                  Apache Kafka Producer
+                          │
+                          ▼
+                     Kafka Topic
+                          │
+                          ▼
+                  Apache Kafka Consumer
+                          │
+        ┌─────────────────┴─────────────────┐
+        │                                   │
+        ▼                                   ▼
+ Analytics Engine                  Snowflake Database
+        │                                   │
+        ▼                                   ▼
+ Health Score                      dbt ELT Pipeline
+ Spoilage Prediction                      │
+ Route Optimization                       ▼
+ Arbitrage Engine                 Analytical Models
+        │                                   │
+        └───────────────┬───────────────────┘
+                        ▼
+               Streamlit Dashboard
+                        │
+                        ▼
+                 Email Notifications
 ```
 
 ---
 
 # ⚙ Technology Stack
 
-| Layer | Technology |
-|--------|------------|
-| Programming | Python |
-| Streaming | Apache Kafka |
-| Data Warehouse | Snowflake |
-| ELT | dbt |
-| Dashboard | Streamlit |
-| Database | Snowflake |
-| Alerts | SMTP Email |
-| Data Processing | Pandas |
-| Visualization | Plotly |
-| Version Control | Git & GitHub |
+| Layer                | Technology          |
+| -------------------- | ------------------- |
+| Programming Language | Python 3.10         |
+| Streaming            | Apache Kafka        |
+| Cloud Warehouse      | Snowflake           |
+| ELT                  | dbt Core            |
+| Dashboard            | Streamlit           |
+| Visualization        | Plotly              |
+| Analytics            | Pandas              |
+| Database Connector   | Snowflake Connector |
+| Alerts               | SMTP Email          |
+| Version Control      | Git & GitHub        |
 
 ---
 
 # 📂 Project Structure
 
-```
+```text
 AtmoSync
 │
-├── analytics/
+├── analytics
 │   ├── health_score.py
 │   ├── spoilage_prediction.py
-│   ├── arbitrage_engine.py
-│   └── route_optimizer.py
+│   ├── route_optimizer.py
+│   └── arbitrage_engine.py
 │
-├── alerts/
+├── alerts
 │   ├── alert_engine.py
 │   └── email_alert.py
 │
-├── dashboard/
+├── dashboard
 │   └── app.py
 │
-├── database/
+├── database
 │   └── snowflake_db.py
 │
-├── dbt/
-│   ├── staging/
-│   ├── intermediate/
-│   ├── marts/
-│   └── models/
-│
-├── kafka/
+├── kafka
 │   ├── producer.py
 │   └── consumer.py
 │
-├── simulator/
+├── dbt
+│   ├── models
+│   ├── staging
+│   ├── intermediate
+│   ├── marts
+│   ├── tests
+│   ├── dbt_project.yml
+│   ├── packages.yml
+│   └── profiles.yml
 │
-├── screenshots/
+├── simulator
 │
 └── README.md
 ```
@@ -161,71 +156,79 @@ AtmoSync
 
 # 📊 Analytics Modules
 
-## 1. Health Score Engine
+## Health Score Engine
 
-Calculates container health based on
+Calculates container health based on:
 
-- Temperature
-- Humidity
-- Battery
-- Vibration
-
----
-
-## 2. Spoilage Prediction
-
-Predicts spoilage probability using environmental conditions.
+* Temperature
+* Humidity
+* Battery
+* Network Signal
+* Door Status
+* Vibration
 
 Outputs:
 
-- Spoilage %
-- Risk Status
+* Health Score
+* Risk Level
 
 ---
 
-## 3. Route Optimizer
+## Spoilage Prediction
 
-Recommends whether shipment should
+Predicts:
 
-- Continue
-- Inspect
-- Reroute
+* Spoilage Probability
+* Product Status
+* Shelf-Life Risk
 
 ---
 
-## 4. Arbitrage Engine
+## Route Optimization
 
-Suggests the most profitable nearby market before spoilage occurs.
+Suggests:
+
+* Continue Delivery
+* Reroute Shipment
+* Immediate Inspection
+
+---
+
+## Arbitrage Engine
+
+Identifies profitable market opportunities using:
+
+* Market Price
+* Demand Index
+* Supply Index
+* Estimated Profit
 
 Outputs:
 
-- Best Market
-- Demand Index
-- Supply Index
-- Estimated Price
-- Recommendation
+* Best Market
+* Financial Recommendation
 
 ---
 
 # 📡 Real-Time Dashboard
 
-Dashboard includes
+The Streamlit dashboard provides:
 
-- Live KPI Cards
-- Health Score
-- Spoilage Probability
-- Live Charts
-- Historical Analytics
-- GPS Map
-- Email Alerts
-- System Status
-- Latest Sensor Feed
+* Live KPI Cards
+* Container Health Score
+* Spoilage Analysis
+* Market Arbitrage Insights
+* Live Charts
+* Sensor Feed
+* Container Map
+* Alert Monitoring
+* System Status
 
 ---
 
 # 📈 dbt Pipeline
 
-```
+```text
 Raw Sensor Data
         │
         ▼
@@ -241,42 +244,17 @@ Mart Models
 Dashboard
 ```
 
-Models created
+Models:
 
-- stg_sensor_data
-- int_health_score
-- int_spoilage
-- mart_dashboard
-- mart_arbitrage
+* stg_sensor_data
+* int_health_score
+* int_spoilage
+* mart_dashboard
+* mart_arbitrage
 
----
-
-# 📧 Alert System
-
-Automatic email notifications are generated whenever:
-
-- High Temperature
-- High Humidity
-- Low Battery
-- Weak Network
-- Door Open
-- High Vibration
-
----
-
-# 🧪 dbt Testing
-
-Implemented
-
-- Not Null Tests
-- Schema Validation
-- Documentation
-- Model Lineage
-
-Commands
+Testing:
 
 ```bash
-dbt debug
 dbt run
 dbt test
 dbt docs generate
@@ -285,64 +263,130 @@ dbt docs serve
 
 ---
 
-# 🚀 Installation
+# 📧 Alert System
 
-Clone repository
+Automatic notifications are generated for:
 
-```bash
-git clone https://github.com/lucasratna/AtmoSync-Micro-Climate-Arbitrage-Analytics.git
+* High Temperature
+* High Humidity
+* Low Battery
+* Weak Network
+* Door Open
+* High Vibration
+* High Spoilage Risk
+
+Alerts are available through:
+
+* Dashboard
+* Console
+* Email
+
+---
+
+# 🔄 Data Pipeline
+
+```text
+IoT Simulator
+
+↓
+
+Kafka Producer
+
+↓
+
+Kafka Topic
+
+↓
+
+Kafka Consumer
+
+↓
+
+Analytics Engine
+
+↓
+
+Snowflake
+
+↓
+
+dbt Models
+
+↓
+
+Streamlit Dashboard
+
+↓
+
+Email Alerts
 ```
 
-Create virtual environment
+---
+
+# 🚀 Running the Project
+
+## Clone Repository
+
+```bash
+git clone https://github.com/sarthak-raj08/AtmoSync-Micro-Climate-Arbitrage-Analytics.git
+```
+
+## Create Virtual Environment
 
 ```bash
 python -m venv venv
 ```
 
-Activate
+## Activate Environment
 
-Windows
+Windows:
 
 ```bash
 venv\Scripts\activate
 ```
 
-Install packages
+Linux:
+
+```bash
+source venv/bin/activate
+```
+
+## Install Requirements
 
 ```bash
 pip install -r requirements.txt
 ```
 
----
-
-# ▶ Run Project
-
-Producer
+## Start Kafka Producer
 
 ```bash
 python kafka/producer.py
 ```
 
-Consumer
+## Start Kafka Consumer
 
 ```bash
 python kafka/consumer.py
 ```
 
-Dashboard
+## Launch Dashboard
 
 ```bash
 streamlit run dashboard/app.py
 ```
 
-dbt
+## Run dbt
 
 ```bash
 cd dbt
 
-dbt run
+dbt run --profiles-dir .
 
-dbt test
+dbt test --profiles-dir .
+
+dbt docs generate --profiles-dir .
+
+dbt docs serve --profiles-dir .
 ```
 
 ---
@@ -351,44 +395,37 @@ dbt test
 
 ## Dashboard
 
-*(Add Screenshot Here)*
-
----
+(Add Screenshot)
 
 ## Kafka Producer
 
-*(Add Screenshot Here)*
-
----
+(Add Screenshot)
 
 ## Kafka Consumer
 
-*(Add Screenshot Here)*
-
----
+(Add Screenshot)
 
 ## Snowflake
 
-*(Add Screenshot Here)*
-
----
+(Add Screenshot)
 
 ## dbt Documentation
 
-*(Add Screenshot Here)*
+(Add Screenshot)
 
 ---
 
-# 🎯 Future Enhancements
+# 📚 Future Enhancements
 
-- Docker Deployment
-- Kubernetes
-- ML-based Spoilage Forecasting
-- Mobile Dashboard
-- Power BI Integration
-- Apache Superset Dashboard
-- Slack Notifications
-- Airflow Scheduling
+* Docker Deployment
+* Apache Airflow Scheduling
+* Kubernetes Deployment
+* REST APIs
+* Machine Learning Models
+* Mobile Dashboard
+* Slack Integration
+* SMS Alerts
+* Multi-Warehouse Monitoring
 
 ---
 
@@ -396,16 +433,38 @@ dbt test
 
 **Lucas Ratna Lauretta**
 
-GitHub
+B.Tech Information Technology
+BVRIT Hyderabad College of Engineering for Women
 
+GitHub:
 https://github.com/lucasratna
 
-LinkedIn
-
+LinkedIn:
 https://www.linkedin.com/in/lucas-ratna-lauretta-47b26b345/
 
 ---
 
-# ⭐ If you like this project
+# ✅ Project Status
 
-Please consider giving it a ⭐ on GitHub.
+| Module                | Status |
+| --------------------- | ------ |
+| Kafka Producer        | ✅      |
+| Kafka Consumer        | ✅      |
+| IoT Simulator         | ✅      |
+| Snowflake Integration | ✅      |
+| Health Score Engine   | ✅      |
+| Spoilage Prediction   | ✅      |
+| Route Optimization    | ✅      |
+| Arbitrage Engine      | ✅      |
+| Alert Engine          | ✅      |
+| Email Notifications   | ✅      |
+| Streamlit Dashboard   | ✅      |
+| dbt Pipeline          | ✅      |
+| dbt Documentation     | ✅      |
+| Live Monitoring       | ✅      |
+
+---
+
+# ⭐ Result
+
+AtmoSync demonstrates a complete real-time data engineering workflow combining streaming analytics, cloud warehousing, ELT modeling, predictive analytics, and business intelligence for intelligent agricultural supply chain optimization.
