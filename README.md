@@ -432,15 +432,8 @@ dbt docs serve --profiles-dir .
 # 👨‍💻 Author
 
 **Lucas Ratna Lauretta**
-
-B.Tech Information Technology
-BVRIT Hyderabad College of Engineering for Women
-
-GitHub:
-https://github.com/lucasratna
-
-LinkedIn:
-https://www.linkedin.com/in/lucas-ratna-lauretta-47b26b345/
+**Sarthak Raj**
+**Aryan Shingala**
 
 ---
 
